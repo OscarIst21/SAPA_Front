@@ -1,7 +1,7 @@
 import React from 'react';
 import BarraLateral from '../../../components/BarraLateral/BarraLateral';
 import BarraSuperior from '../../../components/BarraSuperior/jsx/BarraSuperior';
-
+import FacturaTable from '../../../components/FacturaTabla/jsx/FacturaTabla';
 const Inicio = () => {
   return (
     <div className="inicio-container">
@@ -9,7 +9,7 @@ const Inicio = () => {
       <div className="contenido">
         <BarraSuperior />
         <div className="area-contenido">
-          { <h1>Hola</h1>}
+          { <FacturaTable/>}
         </div>
       </div>
     </div>
