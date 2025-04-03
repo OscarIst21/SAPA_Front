@@ -1,0 +1,111 @@
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.titulo {
+  font-size: 1.5rem;
+  color: #009f1b;
+  margin: 0;
+}
+
+.derecha {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.notificaciones {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.icono-notificacion {
+  font-size: 1.2rem;
+  color: #64748b;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+}
+
+.usuario {
+  position: relative;
+}
+
+.boton-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.nombre-usuario {
+  color: #64748b;
+}
+
+.menu-usuario {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  min-width: 200px;
+  display: none;
+}
+
+.usuario:hover .menu-usuario {
+  display: block;
+}
+
+.area {
+  color: #64748b;
+  margin: 0.5rem;
+}
+
+.opcion-menu {
+  display: block;
+  padding: 0.5rem;
+  color: #64748b;
+  text-decoration: none;
+}
+
+.opcion-menu:hover {
+  background-color: #f1f5f9;
+  border-radius: 0.25rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 0.5rem 0;
+}
+
+.cerrar-sesion {
+  color: #ef4444;
+}
