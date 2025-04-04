@@ -4,11 +4,12 @@
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
+  columns: 2;
 }
 
 /* Barra lateral fija (no se desplaza con el contenido) */
 .barra-lateral {
-  width: 250px;
+  max-width: 250px;
   height: 100vh;
   background-color: #1f2937;
   color: white;
@@ -22,10 +23,10 @@
 }
 
 /* Área de la derecha (Barra superior + Contenido) */
-.contenido {
+.inicio-container .contenido {
   margin-left: 250px; /* Para que no se solape con la barra lateral */
   width: calc(100vw - 250px);
-  height: calc(100vh - 4rem); /* Restamos la altura de la barra superior */
+  height: calc(100vh); /* Restamos la altura de la barra superior */
   display: flex;
   flex-direction: column;
 }
@@ -40,8 +41,9 @@
   padding: 0 2rem;
   position: fixed; /* Fija la barra superior en la parte superior */
   top: 0;
-  left: 250px; /* Desplaza la barra superior a la derecha para no tapar la barra lateral */
-  width: calc(100vw - 250px); /* Hace que ocupe el espacio restante */
+ /* left: 250px; /* Desplaza la barra superior a la derecha para no tapar la barra lateral */
+  width: calc(100vw - 322px); /* Hace que ocupe el espacio restante */
+  justify-content: space-between;
   z-index: 3; /* Asegura que la barra superior esté encima de todo */
 }
 
