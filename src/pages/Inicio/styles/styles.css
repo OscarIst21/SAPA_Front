@@ -1,8 +1,6 @@
 /* Contenedor principal: Barra lateral + Contenido */
 .inicio-container {
   display: flex;
-  width: 100vw;
-  height: 100vh;
   background-color: #ffffff;
   columns: 2;
 }
