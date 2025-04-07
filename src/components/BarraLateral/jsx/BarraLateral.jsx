@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaRocket, FaFileInvoice, FaCog, FaSignOutAlt } from "react-icons/fa";
-import logo from "../../assets/imagenes/logoPagina.png";
-import "./BarraLateral.css";
+import logo from "../imagenes/logoPagina.png";
+import "../styless/BarraLateral.css";
 
 const BarraLateral = () => {
   const [seleccionado, setSeleccionado] = useState("Inicio");

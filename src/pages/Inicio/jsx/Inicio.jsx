@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import '../styles/styles.css';
 import BarraSuperior from '../../../components/BarraSuperior/jsx/BarraSuperior';
-import BarraLateral from '../../../components/BarraLateral/BarraLateral';
+import BarraLateral from '../../../components/BarraLateral/jsx/BarraLateral';
 import Dashboard from '../../../components/Dashboard/jsx/Dashboard';
 import Proyectos from '../../../components/Proyectos/jsx/Proyectos';
 
