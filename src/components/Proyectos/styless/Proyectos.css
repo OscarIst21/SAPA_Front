@@ -1,0 +1,50 @@
+.proyectos-container {
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+  }
+  
+  .section-title {
+    border-bottom: 2px solid #E67E22;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+  }
+  
+  .progress {
+    height: 20px;
+  }
+  
+  .modal-header {
+    background-color: #E67E22 !important;
+    color: #fff;
+  }
+  /* Estilo para botones */
+.btn.btn-primary {
+  background-color: #E67E22;
+  border-color: #E67E22;
+}
+
+.btn.btn-primary:hover {
+  background-color: #cf711a;
+  border-color: #cf711a;
+}
+
+/* Estilo para barras de progreso */
+.progress-bar {
+  background-color: #E67E22 !important;
+}
+/* Encabezado del modal */
+.modal-header {
+  background-color: #E67E22;
+  color: #fff;
+  border-bottom: none;
+}
+
+/* Botón de cerrar en el modal, con ícono blanco */
+.modal-header .btn-close {
+  filter: brightness(0) invert(1); /* hace el ícono blanco */
+}

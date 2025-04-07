@@ -1,5 +1,4 @@
 .barra-lateral {
-    width: 14rem; /* Ancho fijo */
     height: 100vh;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

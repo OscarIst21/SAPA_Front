@@ -24,4 +24,20 @@
   .dashboard-table {
     margin-top: 20px;
   }
+  .statistic-split {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+  
+  .stat-value {
+    color: #2c3e50; /* Color fuerte para el valor */
+  }
+  
+  .stat-percent {
+    color: #E67E22; /* Verde para el porcentaje */
+  }
   

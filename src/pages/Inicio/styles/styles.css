@@ -21,18 +21,22 @@
 }
 
 /* Área de la derecha (Barra superior + Contenido) */
-.inicio-container .contenido {
-  margin-left: 250px; /* Para que no se solape con la barra lateral */
-  width: calc(100vw - 250px);
-  height: calc(100vh); /* Restamos la altura de la barra superior */
+.inicio-container  {
+   /* Restamos la altura de la barra superior */
   display: flex;
   flex-direction: column;
 }
-
+.contenido {
+  margin-left: 250px; /* Para que no se solape con la barra lateral */
+ 
+   /* Restamos la altura de la barra superior */
+  display: flex;
+  flex-direction: column;
+}
 /* Barra superior fija arriba */
 .barra-superior {
   height: 4rem;
-  background-color: white;
+  background-color: #ffffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -40,7 +44,7 @@
   position: fixed; /* Fija la barra superior en la parte superior */
   top: 0;
  /* left: 250px; /* Desplaza la barra superior a la derecha para no tapar la barra lateral */
-  width: calc(100vw - 322px); /* Hace que ocupe el espacio restante */
+  width: calc(100vw - 250px); /* Hace que ocupe el espacio restante */
   justify-content: space-between;
   z-index: 3; /* Asegura que la barra superior esté encima de todo */
 }
@@ -51,4 +55,5 @@
   padding: 2rem;
   margin-top: 4rem; /* Asegura que el contenido no se superponga con la barra superior */
   overflow-y: auto; /* Habilita el desplazamiento solo en esta sección */
+  
 }

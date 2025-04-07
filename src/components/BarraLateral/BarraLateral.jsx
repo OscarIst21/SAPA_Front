@@ -8,12 +8,12 @@ const BarraLateral = () => {
 
   const menuItems = [
     { nombre: "Inicio", icono: <FaHome />, color: "text-orange-500" },
-    { nombre: "Proyectos", icono: <FaRocket />, color: "text-black" },
-    { nombre: "Facturas", icono: <FaFileInvoice />, color: "text-black" },
+    { nombre: "Proyectos", icono: <FaRocket />, color: "text-orange-500" },
+    { nombre: "Facturas", icono: <FaFileInvoice />, color: "text-orange-500" },
   ];
 
   const menuInferior = [
-    { nombre: "Configurar", icono: <FaCog />, color: "text-black" },
+    { nombre: "Configurar", icono: <FaCog />, color: "text-orange-500" },
     { nombre: "Cerrar sesión", icono: <FaSignOutAlt />, color: "text-red-500" }
   ];
 
