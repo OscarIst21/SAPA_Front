@@ -10,7 +10,7 @@ const BarraLateral = () => {
 
   const menuItems = [
     { nombre: "Inicio", icono: <FaHome />, color: "text-orange-500", ruta: "/inicio" },
-    { nombre: "Programa", icono: <FaCalendarAlt />, color: "text-orange-500", ruta: "/inicio/programa" },
+    { nombre: "Programas", icono: <FaCalendarAlt />, color: "text-orange-500", ruta: "/inicio/programas" },
     { nombre: "Proyectos", icono: <FaRocket />, color: "text-orange-500", ruta: "/inicio/proyectos" },
     { nombre: "Facturas", icono: <FaFileInvoice />, color: "text-orange-500", ruta: "/inicio/facturaTabla" },
   ];

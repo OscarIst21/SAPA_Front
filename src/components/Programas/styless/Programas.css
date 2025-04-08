@@ -1,0 +1,41 @@
+.programas-container {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+.section-title {
+  border-bottom: 2px solid #E67E22;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.detalle-header {
+  margin-bottom: 2rem;
+}
+
+.detalle-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #dee2e6;
+}
+
+.detalle-content p {
+  margin-bottom: 1rem;
+}
+
+.btn.btn-primary {
+  background-color: #E67E22;
+  border-color: #E67E22;
+}
+
+.btn.btn-primary:hover {
+  background-color: #cf711a;
+  border-color: #cf711a;
+}
