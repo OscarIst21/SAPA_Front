@@ -81,7 +81,7 @@ const Proyectos = () => {
   const cerrarModal = () => setMostrarModal(false);
 
   const ModalAvance = () => (
-    <div className="modal-backdrop">
+    <div className="custom-modal-backdrop">
       <div className="modal-window">
         <div className="modal-header-custom">
           <h5>Añadir Avance</h5>
@@ -107,8 +107,8 @@ const Proyectos = () => {
             <button className="btn btn-secondary me-2" onClick={cerrarModal}>
               Cancelar
             </button>
-            <button className="btn btn-primary" disabled>
-              Guardar (no funcional aún)
+            <button className="btn btn-primary" >
+              Guardar
             </button>
           </div>
         </div>
@@ -267,3 +267,4 @@ const Proyectos = () => {
 };
 
 export default Proyectos;
+
