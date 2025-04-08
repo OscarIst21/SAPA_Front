@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../styless/Proyectos.css";
-import { Modal, Button } from "react-bootstrap";
+import factura1 from "../imagenes/factura1.jpg";
+import factura2 from "../imagenes/factura2.jpg";
+import factura3 from "../imagenes/factura3.jpg";
 
 const proyectosData = [
   {
@@ -10,9 +12,21 @@ const proyectosData = [
     progreso: 70,
     status: "Activo",
     areas: ["Finanzas", "Operaciones"],
-    facturas: [
-      { numero: "F001", monto: 1500, estado: "Pagada" },
-      { numero: "F002", monto: 2300, estado: "Pendiente" },
+    avances: [
+      { 
+        id: "AV001",
+        costo: 1500,
+        fecha: "2024-02-15",
+        descripcion: "Implementación fase inicial",
+        evidencia: "url/to/evidence1.pdf",
+      },
+      {
+        id: "AV002",
+        costo: 2300,
+        fecha: "2024-02-20",
+        descripcion: "Capacitación del personal",
+        evidencia: "url/to/evidence2.pdf",
+      },
     ],
   },
   {
@@ -40,12 +54,165 @@ const proyectosData = [
 
 const Proyectos = () => {
   const [proyectoActivo, setProyectoActivo] = useState(null);
+  const [vistaDetalle, setVistaDetalle] = useState(false);
+  const [avanceActivo, setAvanceActivo] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
 
-  const abrirModal = (proyecto) => {
+  const calcularCostoTotal = (avances) =>
+    avances?.reduce((total, avance) => total + avance.costo, 0) || 0;
+
+  const mostrarDetalle = (proyecto) => {
     setProyectoActivo(proyecto);
-    setMostrarModal(true);
+    setVistaDetalle(true);
   };
+
+  const volverALista = () => {
+    setVistaDetalle(false);
+    setProyectoActivo(null);
+    setAvanceActivo(null);
+  };
+
+  const mostrarDetalleAvance = (avance) => {
+    setAvanceActivo(avance);
+    setVistaDetalle(false);
+  };
+
+  const abrirModal = () => setMostrarModal(true);
+  const cerrarModal = () => setMostrarModal(false);
+
+  const ModalAvance = () => (
+    <div className="modal-backdrop">
+      <div className="modal-window">
+        <div className="modal-header-custom">
+          <h5>Añadir Avance</h5>
+          <button className="modal-close" onClick={cerrarModal}>×</button>
+        </div>
+        <div className="modal-body">
+          <div className="form-group">
+            <label>Costo</label>
+            <input type="number" className="form-control" placeholder="Ingrese el costo" />
+          </div>
+          <div className="form-group mt-3">
+            <label>Descripción</label>
+            <textarea className="form-control" rows="3" placeholder="Descripción del avance"></textarea>
+          </div>
+          <div className="form-group mt-3">
+            <label>Evidencia</label>
+            <div className="upload-area" onClick={() => document.getElementById("fileInput").click()}>
+              <p>Arrastra archivos aquí o haz clic para seleccionar</p>
+              <input type="file" id="fileInput" multiple style={{ display: "none" }} />
+            </div>
+          </div>
+          <div className="modal-actions mt-4">
+            <button className="btn btn-secondary me-2" onClick={cerrarModal}>
+              Cancelar
+            </button>
+            <button className="btn btn-primary" disabled>
+              Guardar (no funcional aún)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+  
+
+  if (avanceActivo) {
+    return (
+      <div className="proyectos-container">
+        <div className="detalle-header">
+          <button 
+            className="btn btn-primary mb-3" 
+            onClick={() => {
+              setAvanceActivo(null);
+              setVistaDetalle(true);
+            }}
+          >
+            ← Volver al proyecto
+          </button>
+          <h3 className="section-title">Detalle del Avance</h3>
+        </div>
+        <div className="detalle-content">
+          <div className="card p-4">
+            <h4 className="mb-4">Avance {avanceActivo.id}</h4>
+            <p><strong>ID:</strong> {avanceActivo.id}</p>
+            <p><strong>Costo:</strong> ${avanceActivo.costo.toLocaleString()}</p>
+            <p><strong>Fecha:</strong> {avanceActivo.fecha}</p>
+            <p><strong>Descripción:</strong></p>
+            <p className="mb-4">{avanceActivo.descripcion}</p>
+            <p><strong>Evidencia:</strong></p>
+            <div className="mt-2 evidencias-container">
+              <img src={factura1} alt="Factura 1" className="evidencia-img" />
+              <img src={factura2} alt="Factura 2" className="evidencia-img" />
+              <img src={factura3} alt="Factura 3" className="evidencia-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (vistaDetalle && proyectoActivo) {
+    return (
+      <div className="proyectos-container">
+        {mostrarModal && <ModalAvance />}
+        <div className="detalle-header">
+          <button className="btn btn-primary mb-3" onClick={volverALista}>
+            ← Volver a la lista
+          </button>
+          <h3 className="section-title">Detalle del Proyecto</h3>
+        </div>
+        <div className="detalle-content">
+          <p><strong>ID Proyecto:</strong> {proyectoActivo.id}</p>
+          <p><strong>Nombre:</strong> {proyectoActivo.nombre}</p>
+          <p><strong>Descripción:</strong></p>
+          <p>{proyectoActivo.descripcion}</p>
+          <p><strong>Áreas Involucradas:</strong> {proyectoActivo.areas.join(", ")}</p>
+          
+          <p><strong>Progreso:</strong></p>
+          <div className="progress mb-3">
+            <div
+              className="progress-bar"
+              role="progressbar"
+              style={{ width: `${proyectoActivo.progreso}%` }}
+            >
+              {proyectoActivo.progreso}%
+            </div>
+          </div>
+
+          <div className="avances-header">
+            <h5>Avances del proyecto</h5>
+            <button className="btn btn-success ms-3" onClick={abrirModal}>
+              + Añadir
+            </button>
+          </div>
+
+          <p className="mt-3"><strong>Costo total de avances:</strong> ${calcularCostoTotal(proyectoActivo.avances).toLocaleString()}</p>
+
+          {proyectoActivo.avances?.length > 0 ? (
+            <div className="list-group mt-3">
+              {proyectoActivo.avances.map((avance, idx) => (
+                <div key={idx} className="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <strong>ID: {avance.id}</strong> | Costo: ${avance.costo.toLocaleString()} | Fecha: {avance.fecha}
+                    <p className="mb-0">{avance.descripcion.slice(0, 100)}...</p>
+                  </div>
+                  <button 
+                    className="btn btn-sm btn-primary"
+                    onClick={() => mostrarDetalleAvance(avance)}
+                  >
+                    Ver Detalle
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>No hay avances registrados.</p>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="proyectos-container">
@@ -85,7 +252,7 @@ const Proyectos = () => {
                 <td>
                   <button
                     className="btn btn-sm btn-primary"
-                    onClick={() => abrirModal(proyecto)}
+                    onClick={() => mostrarDetalle(proyecto)}
                   >
                     Ver Detalle
                   </button>
@@ -95,67 +262,6 @@ const Proyectos = () => {
           </tbody>
         </table>
       </div>
-
-      {/* Modal */}
-      <Modal
-        show={mostrarModal}
-        onHide={() => setMostrarModal(false)}
-        size="lg"
-      >
-        <Modal.Header closeButton className=" text-white ">
-          <Modal.Title>Detalle del Proyecto</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {proyectoActivo && (
-            <>
-              <p>
-                <strong>ID Proyecto:</strong> {proyectoActivo.id}
-              </p>
-              <p>
-                <strong>Nombre:</strong> {proyectoActivo.nombre}
-              </p>
-              <p>
-                <strong>Descripción:</strong>
-              </p>
-              <p>{proyectoActivo.descripcion}</p>
-              <p>
-                <strong>Áreas Involucradas:</strong>{" "}
-                {proyectoActivo.areas.join(", ")}
-              </p>
-              <p>
-                <strong>Progreso:</strong>
-              </p>
-              <div className="progress mb-3">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: `${proyectoActivo.progreso}%` }}
-                >
-                  {proyectoActivo.progreso}%
-                </div>
-              </div>
-              <h5>Facturas Asociadas</h5>
-              {proyectoActivo.facturas.length > 0 ? (
-                <ul className="list-group">
-                  {proyectoActivo.facturas.map((factura, idx) => (
-                    <li key={idx} className="list-group-item">
-                      Factura: {factura.numero} | Monto: ${factura.monto} | Estado:{" "}
-                      {factura.estado}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>No hay facturas asociadas.</p>
-              )}
-            </>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setMostrarModal(false)}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 };
