@@ -121,6 +121,18 @@ const Proyectos = () => {
 
   // Remove the verDetalleFactura function completely
 
+  const [imagenModal, setImagenModal] = useState(null);
+
+  // Add ImagenModal component
+  const ImagenModal = ({ imagen, onClose }) => (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-imagen">
+        <button className="modal-close-btn" onClick={onClose}>×</button>
+        <img src={imagen} alt="Imagen ampliada" />
+      </div>
+    </div>
+  );
+
   if (avanceActivo) {
     return (
       <div className="proyectos-container">
@@ -149,9 +161,27 @@ const Proyectos = () => {
                 <p className="mb-4">{avanceActivo.descripcion}</p>
                 <p><strong>Evidencia:</strong></p>
                 <div className="mt-2 evidencias-container mb-4">
-                  <img src={factura1} alt="Factura 1" className="evidencia-img" />
-                  <img src={factura2} alt="Factura 2" className="evidencia-img" />
-                  <img src={factura3} alt="Factura 3" className="evidencia-img" />
+                  <img 
+                    src={factura1} 
+                    alt="Factura 1" 
+                    className="evidencia-img" 
+                    onClick={() => setImagenModal(factura1)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <img 
+                    src={factura2} 
+                    alt="Factura 2" 
+                    className="evidencia-img" 
+                    onClick={() => setImagenModal(factura2)}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <img 
+                    src={factura3} 
+                    alt="Factura 3" 
+                    className="evidencia-img" 
+                    onClick={() => setImagenModal(factura3)}
+                    style={{ cursor: 'pointer' }}
+                  />
                 </div>
 
                 <h5 className="mt-4 mb-3">Facturas Relacionadas</h5>
@@ -198,6 +228,7 @@ const Proyectos = () => {
             )}
           </div>
         </div>
+        {imagenModal && <ImagenModal imagen={imagenModal} onClose={() => setImagenModal(null)} />}
       </div>
     );
   }

@@ -1,8 +1,21 @@
 import React, { useState } from 'react';
 import './FacturaTable.css';
+import factura1 from '../imagenes/factura1.jpg';
+import factura2 from '../imagenes/factura2.jpg';
+import factura3 from '../imagenes/factura3.jpg';
 
 const FacturaTabla = () => {
   const [mostrarProveedor, setMostrarProveedor] = useState(false);
+  const [imagenModal, setImagenModal] = useState(null);
+
+  const ImagenModal = ({ imagen, onClose }) => (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-imagen">
+        <button className="modal-close-btn" onClick={onClose}>×</button>
+        <img src={imagen} alt="Imagen ampliada" />
+      </div>
+    </div>
+  );
 
   if (mostrarProveedor) {
     return (
@@ -91,8 +104,16 @@ const FacturaTabla = () => {
             <td><a href="#" className="link">Ver Factura PDF</a></td>
           </tr>
           <tr>
-            <td>Comprobante de pago (imagen)</td>
-            <td>Comprobante de Pago</td>
+            <td>Comprobante de pago</td>
+            <td>
+              <img 
+                src={factura1} 
+                alt="Comprobante de Pago" 
+                className="evidencia-img" 
+                onClick={() => setImagenModal(factura1)}
+                style={{ cursor: 'pointer' }}
+              />
+            </td>
           </tr>
           <tr>
             <td>Requisición</td>
@@ -103,8 +124,8 @@ const FacturaTabla = () => {
             <td>Nombre de quien recibí</td>
           </tr>
           <tr>
-            <td>Cotizador</td>
-            <td><a href="#" className="link">Ver Cotizador</a></td>
+            <td>Cotizaciones</td>
+            <td><a href="#" className="link">Ver cotizaciones</a></td>
           </tr>
           <tr>
             <td>Cantidad pagada</td>
@@ -125,14 +146,34 @@ const FacturaTabla = () => {
           <tr>
             <td>Evidencias de Compra</td>
             <td>
-              <span className="evidencia">Evidencia 1</span>
-              <span className="evidencia">Evidencia 2</span>
-              <span className="evidencia">Evidencia 3</span>
+              <div className="evidencias-container">
+                <img 
+                  src={factura1} 
+                  alt="Evidencia 1" 
+                  className="evidencia-img" 
+                  onClick={() => setImagenModal(factura1)}
+                  style={{ cursor: 'pointer' }}
+                />
+                <img 
+                  src={factura2} 
+                  alt="Evidencia 2" 
+                  className="evidencia-img" 
+                  onClick={() => setImagenModal(factura2)}
+                  style={{ cursor: 'pointer' }}
+                />
+                <img 
+                  src={factura3} 
+                  alt="Evidencia 3" 
+                  className="evidencia-img" 
+                  onClick={() => setImagenModal(factura3)}
+                  style={{ cursor: 'pointer' }}
+                />
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
-      
+      {imagenModal && <ImagenModal imagen={imagenModal} onClose={() => setImagenModal(null)} />}
     </div>
   );
 };

@@ -12,7 +12,7 @@ const BarraLateral = () => {
     { nombre: "Inicio", icono: <FaHome />, color: "text-orange-500", ruta: "/inicio" },
     { nombre: "Programas", icono: <FaCalendarAlt />, color: "text-orange-500", ruta: "/inicio/programas" },
     { nombre: "Proyectos", icono: <FaRocket />, color: "text-orange-500", ruta: "/inicio/proyectos" },
-    { nombre: "Facturas", icono: <FaFileInvoice />, color: "text-orange-500", ruta: "/inicio/" },
+    { nombre: "Facturas", icono: <FaFileInvoice />, color: "text-orange-500", ruta: "/inicio/Facturas" },
   ];
 
   const handleNavigation = (item) => {

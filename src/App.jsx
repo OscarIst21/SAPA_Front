@@ -1,14 +1,19 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Inicio from "./pages/Inicio/jsx/Inicio";
-import Login from "./pages/login.jsx";  // Fixed capitalization
+import { Routes, Route } from "react-router-dom";
+import InicioPage from "./pages/Inicio/jsx/Inicio";
+import Proyectos from "./components/Proyectos/jsx/Proyectos";
+import Programas from "./components/Programas/jsx/Programas";
+import Facturas from "./components/Facturas/Facturas";
 
-export default function App() {
+function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/inicio/*" element={<Inicio />} />
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="inicio" element={<InicioPage />}>
+        <Route path="proyectos" element={<Proyectos />} />
+        <Route path="programas" element={<Programas />} />
+        <Route path="facturas" element={<Facturas />} />
+      </Route>
     </Routes>
   );
 }
+
+export default App;

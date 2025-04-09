@@ -1,0 +1,28 @@
+.facturas-container {
+  padding: 20px;
+}
+
+.estado-badge {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.estado-badge.pagada {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.estado-badge.pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.section-title {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}

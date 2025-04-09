@@ -6,6 +6,7 @@ import BarraLateral from '../../../components/BarraLateral/jsx/BarraLateral';
 import Dashboard from '../../../components/Dashboard/jsx/Dashboard';
 import Proyectos from '../../../components/Proyectos/jsx/Proyectos';
 import Programas from '../../../components/Programas/jsx/Programas';
+import Facturas from '../../../components/Facturas/Facturas';
 
 const Inicio = () => {
   return (
@@ -18,6 +19,7 @@ const Inicio = () => {
             <Route index element={<Dashboard />} />
             <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/programas" element={<Programas />} />
+            <Route path="/facturas" element={<Facturas />} />
           </Routes>
         </div>
       </div>
