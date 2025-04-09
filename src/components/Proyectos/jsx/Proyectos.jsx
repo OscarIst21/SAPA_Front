@@ -3,6 +3,7 @@ import "../styless/Proyectos.css";
 import factura1 from "../imagenes/factura1.jpg";
 import factura2 from "../imagenes/factura2.jpg";
 import factura3 from "../imagenes/factura3.jpg";
+import FacturaTabla from "../../FacturaTabla/jsx/FacturaTabla";
 
 const proyectosData = [
   {
@@ -57,6 +58,7 @@ const Proyectos = () => {
   const [vistaDetalle, setVistaDetalle] = useState(false);
   const [avanceActivo, setAvanceActivo] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [mostrarFactura, setMostrarFactura] = useState(false);
 
   const calcularCostoTotal = (avances) =>
     avances?.reduce((total, avance) => total + avance.costo, 0) || 0;
@@ -117,6 +119,8 @@ const Proyectos = () => {
   );
   
 
+  // Remove the verDetalleFactura function completely
+
   if (avanceActivo) {
     return (
       <div className="proyectos-container">
@@ -126,6 +130,7 @@ const Proyectos = () => {
             onClick={() => {
               setAvanceActivo(null);
               setVistaDetalle(true);
+              setMostrarFactura(false);
             }}
           >
             ← Volver al proyecto
@@ -134,18 +139,63 @@ const Proyectos = () => {
         </div>
         <div className="detalle-content">
           <div className="card p-4">
-            <h4 className="mb-4">Avance {avanceActivo.id}</h4>
-            <p><strong>ID:</strong> {avanceActivo.id}</p>
-            <p><strong>Costo:</strong> ${avanceActivo.costo.toLocaleString()}</p>
-            <p><strong>Fecha:</strong> {avanceActivo.fecha}</p>
-            <p><strong>Descripción:</strong></p>
-            <p className="mb-4">{avanceActivo.descripcion}</p>
-            <p><strong>Evidencia:</strong></p>
-            <div className="mt-2 evidencias-container">
-              <img src={factura1} alt="Factura 1" className="evidencia-img" />
-              <img src={factura2} alt="Factura 2" className="evidencia-img" />
-              <img src={factura3} alt="Factura 3" className="evidencia-img" />
-            </div>
+            {!mostrarFactura ? (
+              <>
+                <h4 className="mb-4">Avance {avanceActivo.id}</h4>
+                <p><strong>ID:</strong> {avanceActivo.id}</p>
+                <p><strong>Costo:</strong> ${avanceActivo.costo.toLocaleString()}</p>
+                <p><strong>Fecha:</strong> {avanceActivo.fecha}</p>
+                <p><strong>Descripción:</strong></p>
+                <p className="mb-4">{avanceActivo.descripcion}</p>
+                <p><strong>Evidencia:</strong></p>
+                <div className="mt-2 evidencias-container mb-4">
+                  <img src={factura1} alt="Factura 1" className="evidencia-img" />
+                  <img src={factura2} alt="Factura 2" className="evidencia-img" />
+                  <img src={factura3} alt="Factura 3" className="evidencia-img" />
+                </div>
+
+                <h5 className="mt-4 mb-3">Facturas Relacionadas</h5>
+                <div className="table-responsive">
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Número de Factura</th>
+                        <th>Fecha</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>FAC-001</td>
+                        <td>2024-02-15</td>
+                        <td>$1,500.00</td>
+                        <td>Pagada</td>
+                        <td>
+                          <button
+                            className="btn btn-sm btn-primary"
+                            onClick={() => setMostrarFactura(true)}
+                          >
+                            Ver Detalle
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            ) : (
+              <div>
+                <button 
+                  className="btn btn-primary mb-3"
+                  onClick={() => setMostrarFactura(false)}
+                >
+                  ← Volver a la lista de facturas
+                </button>
+                <FacturaTabla />
+              </div>
+            )}
           </div>
         </div>
       </div>

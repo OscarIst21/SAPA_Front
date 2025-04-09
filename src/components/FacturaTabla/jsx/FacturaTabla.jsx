@@ -1,7 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './FacturaTable.css';
 
-const FacturaTable = () => {
+const FacturaTabla = () => {
+  const [mostrarProveedor, setMostrarProveedor] = useState(false);
+
+  if (mostrarProveedor) {
+    return (
+      <div className="factura-table-container">
+        <button 
+          className=" btn2 "
+          onClick={() => setMostrarProveedor(false)}
+        >
+          ← Volver a Factura
+        </button>
+        <table className="factura-table">
+          <thead>
+            <tr>
+              <th colSpan="2">Detalle del Proveedor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombre</td>
+              <td>Proveedor XYZ</td>
+            </tr>
+            <tr>
+              <td>RFC</td>
+              <td>PXYZ123456ABC</td>
+            </tr>
+            <tr>
+              <td>Dirección</td>
+              <td>Calle Principal #123</td>
+            </tr>
+            <tr>
+              <td>Teléfono</td>
+              <td>555-0123</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>contacto@proveedorxyz.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
   return (
     <div className="factura-table-container">
       <table className="factura-table">
@@ -21,7 +65,18 @@ const FacturaTable = () => {
           </tr>
           <tr>
             <td>Proveedor</td>
-            <td>Proveedor XYZ</td>
+            <td>
+              <a 
+                href="#" 
+                className="link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMostrarProveedor(true);
+                }}
+              >
+                Proveedor XYZ
+              </a>
+            </td>
           </tr>
           <tr>
             <td>Área</td>
@@ -77,9 +132,9 @@ const FacturaTable = () => {
           </tr>
         </tbody>
       </table>
-      <button className="factura-table-button">Volver</button>
+      
     </div>
   );
 };
 
-export default FacturaTable;
+export default FacturaTabla;
