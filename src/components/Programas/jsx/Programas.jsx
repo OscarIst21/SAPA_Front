@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styless/Programas.css";
+import Proyectos from "../../Proyectos/jsx/Proyectos";
 
 const programasData = [
   {
@@ -7,6 +8,7 @@ const programasData = [
     nombre: "Programa de Desarrollo Social",
     año: 2024,
     presupuesto: 500000,
+    presupuestoUsado: 320000,
     descripcion: "Programa enfocado en el desarrollo de comunidades vulnerables.",
     status: "Activo",
     areas: ["Social", "Educación"],
@@ -16,6 +18,7 @@ const programasData = [
     nombre: "Programa de Infraestructura",
     año: 2024,
     presupuesto: 1200000,
+    presupuestoUsado: 800000,
     descripcion: "Mejoramiento de infraestructura urbana y rural.",
     status: "Activo",
     areas: ["Obras Públicas", "Planeación"],
@@ -25,6 +28,7 @@ const programasData = [
     nombre: "Programa de Capacitación",
     año: 2023,
     presupuesto: 300000,
+    presupuestoUsado: 280000,
     descripcion: "Capacitación profesional para servidores públicos.",
     status: "Completado",
     areas: ["Recursos Humanos", "Administración"],
@@ -61,10 +65,16 @@ const Programas = () => {
           <p><strong>Nombre:</strong> {programaActivo.nombre}</p>
           <p><strong>Año:</strong> {programaActivo.año}</p>
           <p><strong>Presupuesto:</strong> ${programaActivo.presupuesto.toLocaleString()}</p>
+          <p><strong>Presupuesto Usado:</strong> ${programaActivo.presupuestoUsado.toLocaleString()}</p>
           <p><strong>Descripción:</strong></p>
           <p>{programaActivo.descripcion}</p>
           <p><strong>Status:</strong> {programaActivo.status}</p>
           <p><strong>Áreas Involucradas:</strong> {programaActivo.areas.join(", ")}</p>
+
+          <div className="mt-4">
+            <h4 className="section-title">Proyectos del Programa</h4>
+            <Proyectos />
+          </div>
         </div>
       </div>
     );
@@ -81,6 +91,7 @@ const Programas = () => {
               <th>Nombre</th>
               <th>Año</th>
               <th>Presupuesto</th>
+              <th>Presupuesto Usado</th>
               <th>Status</th>
               <th>Acciones</th>
             </tr>
@@ -91,6 +102,7 @@ const Programas = () => {
                 <td>{programa.nombre}</td>
                 <td>{programa.año}</td>
                 <td>${programa.presupuesto.toLocaleString()}</td>
+                <td>${programa.presupuestoUsado.toLocaleString()}</td>
                 <td>{programa.status}</td>
                 <td>
                   <button

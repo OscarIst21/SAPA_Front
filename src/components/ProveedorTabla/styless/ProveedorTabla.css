@@ -1,0 +1,62 @@
+.proveedor-container {
+  padding: 20px;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+}
+
+.section-title {
+  border-bottom: 2px solid #E67E22;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.documento-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.documento-icon {
+  color: #E67E22;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.documento-icon:hover {
+  transform: scale(1.1);
+  color: #cf711a;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.btn-primary {
+  background-color: #E67E22;
+  border-color: #E67E22;
+}
+
+.btn-primary:hover {
+  background-color: #cf711a;
+  border-color: #cf711a;
+}
