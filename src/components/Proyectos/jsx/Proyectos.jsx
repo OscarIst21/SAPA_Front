@@ -183,8 +183,15 @@ const Proyectos = () => {
                     style={{ cursor: 'pointer' }}
                   />
                 </div>
-
+                <div className="facturaHeader">
                 <h5 className="mt-4 mb-3">Facturas Relacionadas</h5>
+                
+                <button className="btn btn-success ms-3 tm" >
+                  Añadir Factura
+                </button>
+
+                </div>
+                
                 <div className="table-responsive">
                   <table className="table table-striped">
                     <thead>
